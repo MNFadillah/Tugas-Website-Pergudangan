@@ -11,7 +11,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Barang</li>
       </ol>
     </section>
     
@@ -27,38 +27,44 @@
               <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>ID</th>
+                        <th>NAMA</th>
+                        <th>DESKRIPSI</th>
+                        <th>STOK</th>
+                        <th>DIBUAT PADA</th>
+                        <th>DIUBAH PADA</th>
+                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tfoot>
-                  <?php
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      echo print_r($row);
-                    }
-                  ?>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>ID</th>
+                        <th>NAMA BARANG</th>
+                        <th>DESKRIPSI</th>
+                        <th>STOK</th>
+                        <th>DIBUAT PADA</th>
+                        <th>DIUBAH PADA</th>
+                        <th>ACTION</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                  <?php
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td><?php echo $row['id'];?></td>
+                        <td><?php echo $row['nama'];?></td>
+                        <td><?php echo $row['deskripsi'];?></td>
+                        <td><?php echo $row['stok'];?></td>
+                        <td><?php echo $row['created_at'];?></td>
+                        <td><?php echo $row['updated_at'];?></td>
+                        <td align="center">
+                        <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
+                          <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
+                          <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                        </td>
                     </tr>
+                    <?php }
+                    ?>
                 </tbody>
               </table>
             </div>
