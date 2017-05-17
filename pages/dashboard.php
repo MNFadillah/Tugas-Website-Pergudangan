@@ -2,6 +2,13 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+    <?php
+    $barangCount = $db->query("select * from barang")->num_rows;
+    $barangOutCount = $db->query("select * from barang_keluar")->num_rows;
+    $barangInCount = $db->query("select * from barang_masuk")->num_rows;
+    $userCount = $db->query("select * from user")->num_rows;
+
+  ?>
       <h1>
         Dashboard
         <small>Control panel</small>
@@ -19,7 +26,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo $barangCount; ?></h3>
 
               <p>Barang</p>
             </div>
@@ -34,7 +41,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $barangInCount; ?></h3>
 
               <p>Barang Masuk</p>
             </div>
@@ -49,7 +56,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $barangOutCount; ?></h3>
 
               <p>Barang Keluar</p>
             </div>
@@ -64,7 +71,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo $userCount; ?></h3>
 
               <p>User</p>
             </div>
