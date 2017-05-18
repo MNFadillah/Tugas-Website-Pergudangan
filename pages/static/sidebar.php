@@ -39,7 +39,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url();?>/barang"><i class="fa fa-circle-o"></i> List Barang</a></li>
+            <li class="active"><a href="<?php echo base_url();?>barang"><i class="fa fa-circle-o"></i> List Barang</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
           </ul>
         </li>
@@ -52,7 +52,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url();?>/barang-masuk"><i class="fa fa-circle-o"></i> List Barang Masuk</a></li>
+            <li class="active"><a href="<?php echo base_url();?>barang-masuk"><i class="fa fa-circle-o"></i> List Barang Masuk</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Add Barang Masuk</a></li>
           </ul>
         </li>
@@ -65,7 +65,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url();?>/barang-keluar"><i class="fa fa-circle-o"></i> List Barang Keluar</a></li>
+            <li class="active"><a href="<?php echo base_url();?>barang-keluar"><i class="fa fa-circle-o"></i> List Barang Keluar</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Add Barang Keluar</a></li>
           </ul>
         </li>
@@ -78,7 +78,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url();?>/user"><i class="fa fa-circle-o"></i> List Users</a></li>
+            <li class="active"><a href="<?php echo base_url();?>user"><i class="fa fa-circle-o"></i> List Users</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Add Users</a></li>
           </ul>
         </li>

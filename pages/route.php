@@ -13,7 +13,17 @@
 			$barangMenu = true;
 			include 'pages/static/header.php'; //untuk menambahkan file header.php di folder pages/static/
 			include 'pages/static/sidebar.php';
-			include 'pages/barang/index.php'; //menambahkan file pages/content.php
+			if(isset($_GET['action'])){
+				$action = $_GET['action'];
+				//echo "<div class='content-wrapper'>$action</div>";
+				if($action == 'edit'){
+					include 'pages/barang/edit.php';
+				}else if($action == 'delete'){
+					include 'pages/barang/index.php';
+				}
+			}else{
+				include 'pages/barang/index.php'; //menambahkan file pages/content.php
+			}
 		}else if($page == 'barang-masuk'){ //jika page nya home
 			$barangInMenu = true;
 			include 'pages/static/header.php'; //untuk menambahkan file header.php di folder pages/static/

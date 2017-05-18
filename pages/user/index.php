@@ -52,7 +52,7 @@
                         <td><?php echo $row['ktp'];?></td>
                         <td><?php echo $row['username'];?></td>
                         <td align="center">
-                        <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
+                          <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
                           <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
                           <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
@@ -67,4 +67,4 @@
       </div>
     </section>
   </div>
- 
+      
