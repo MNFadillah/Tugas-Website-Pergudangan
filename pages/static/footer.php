@@ -55,7 +55,6 @@
         $('#example').DataTable();
     } );
     $(".open-DialogBarang").click(function () {
-      var myBookId = $(this).data('id');
       var id = $(this).closest('tr').children('td.id').text();
       var nama = $(this).closest('tr').children('td.nama').text();
       var deskripsi = $(this).closest('tr').children('td.deskripsi').text();
@@ -66,6 +65,35 @@
       $("input#nama").val( nama );
       $("input#deskripsi").val( deskripsi );
       $("input#stok").val( stok );
+    });
+    $(".open-DialogBarangIn").click(function () {
+      var id = $(this).closest('tr').children('td.id').text();
+      var id_barang = $(this).closest('tr').children('td.id_barang').text();
+      var id_user = $(this).closest('tr').children('td.id_user').text();
+      var jumlah = $(this).closest('tr').children('td.jumlah').text();
+      var vendor = $(this).closest('tr').children('td.vendor').text();
+      // console.log(vendor);
+      // console.log(id);
+      $("input#id").val( id );
+      $("input#id_barang").val( id_barang );
+      $("input#id_user").val( id_user );
+      $("input#jumlah").val( jumlah );
+      $("input#vendor").val( vendor );
+    });
+
+    $(".open-DialogBarangOut").click(function () {
+      var id = $(this).closest('tr').children('td.id').text();
+      var id_barang = $(this).closest('tr').children('td.id_barang').text();
+      var id_user = $(this).closest('tr').children('td.id_user').text();
+      var jumlah = $(this).closest('tr').children('td.jumlah').text();
+      var departemen = $(this).closest('tr').children('td.departemen').text();
+      // console.log(vendor);
+      // console.log(id);
+      $("input#id").val( id );
+      $("input#id_barang").val( id_barang );
+      $("input#id_user").val( id_user );
+      $("input#jumlah").val( jumlah );
+      $("input#departemen").val( departemen );
     });
 
 </script>

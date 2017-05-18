@@ -96,7 +96,7 @@
       </div>
       <div class="modal-body">
           <form class="form-horizontal" action="<?php echo base_url(); ?>barang/edit" method="post">
-            <input type="hidden" name="id" class="form-control" id="text-id" placeholder="Enter ID">
+            <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
               <label class="control-label col-sm-2" for="deskripsi">Nama :</label>
               <div class="col-sm-10"> 
