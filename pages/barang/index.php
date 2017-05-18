@@ -72,7 +72,7 @@
                         <td class="updated_at"><?php echo $row['updated_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarang btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
-                          <button type="button" onclick="location.href('<?php echo base_url();?>barang/delete/<?php echo $row['id']; ?>')" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                          <button type="button" onclick="window.location='<?php echo base_url();?>barang/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
                     </tr>
                     <?php }
