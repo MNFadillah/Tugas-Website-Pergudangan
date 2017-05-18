@@ -1,22 +1,25 @@
+<div class="content-wrapper">
 <?php
 	if(isset($_POST['submit'])){
-		$nama = $db->real_escape_string($_POST['nama']);
-		$deskripsi = $db->real_escape_string($_POST['deskripsi']);
-		$stok = $db->real_escape_string($_POST['stok']);
-		$query = "insert into barang(nama, deskripsi, stok) values('$nama', '$deskripsi', '$stok')";
-
-		if($db->query($query)){
+		$id = trim($db->real_escape_string($_POST['id']));
+    $nama = trim($db->real_escape_string($_POST['nama']));
+    $ktp = trim($db->real_escape_string($_POST['ktp']));
+    $username = trim($db->real_escape_string($_POST['username']));
+    $password = trim($db->real_escape_string($_POST['password']));
+		$query = "insert into user(nama, ktp, username, password) values('$nama', '$ktp', '$username', md5('$password'))";
+    $result = $db->query($query);
+		if($result){
 			echo "<script>alert('data berhasil ditambahkan');</script>";
 		}else{
-			echo "<script>alert('data berhasil ditambahkan');</script>";
+
+			echo "<script>alert('data gagal ditambahkan');</script>";
 		}
 	}
 ?>
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
   <section class="content-header">
       <h1>
-        Tambah Barang
+        Tambah User
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -29,29 +32,35 @@
        <div class="col-xs-12">
        <div class="box">
        <br>
-  		<form class="form-horizontal" action="<?php echo base_url(); ?>barang/add" method="post">
-            <input type="hidden" name="id" class="form-control" id="text-id" placeholder="Enter ID">
+  		<form class="form-horizontal" action="<?php echo base_url(); ?>user/add?" method="post">
+            <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="deskripsi">Nama :</label>
-              <div class="col-sm-8"> 
+              <label class="control-label col-sm-2" for="nama">Nama :</label>
+              <div class="col-sm-10"> 
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="deskripsi">Deskripsi :</label>
-              <div class="col-sm-8"> 
-                <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Enter Deskripsi">
+              <label class="control-label col-sm-2" for="ktp">KTP :</label>
+              <div class="col-sm-10"> 
+                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Enter KTP">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="stok">Stok : </label>
-              <div class="col-sm-8"> 
-                <input type="number" name="stok" class="form-control" id="stok" placeholder="Enter Stok">
+              <label class="control-label col-sm-2" for="username">USERNAME : </label>
+              <div class="col-sm-10"> 
+                <input type="text" name="username" class="form-control" id="username" placeholder="Enter USERNAME">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">PASSWORD : </label>
+              <div class="col-sm-10"> 
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
               </div>
             </div>
             <div class="form-group"> 
-              <div class="col-sm-offset-2 col-sm-8">
-                <button type="submit" name='submit' class="btn btn-default">Submit</button>
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="submit" class="btn btn-default">Submit</button>
               </div>
             </div>
           </form>
