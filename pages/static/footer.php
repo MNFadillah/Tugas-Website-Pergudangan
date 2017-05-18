@@ -60,11 +60,23 @@
       var deskripsi = $(this).closest('tr').children('td.deskripsi').text();
       var stok = $(this).closest('tr').children('td.stok').text();
       var created_at = $(this).closest('tr').children('td.created_at').text();
-      console.log(id);
-      $("input#text-id").val( id );
+      //console.log(id);
+      $("input#id").val( id );
       $("input#nama").val( nama );
       $("input#deskripsi").val( deskripsi );
       $("input#stok").val( stok );
+    });
+    $(".open-DialogUser").click(function () {
+      var id = $(this).closest('tr').children('td.id').text();
+      var nama = $(this).closest('tr').children('td.nama').text();
+      var ktp = $(this).closest('tr').children('td.ktp').text();
+      var username = $(this).closest('tr').children('td.username').text();
+      //var created_at = $(this).closest('tr').children('td.created_at').text();
+      //console.log(id);
+      $("input#id").val( id );
+      $("input#nama").val( nama );
+      $("input#ktp").val( ktp );
+      $("input#username").val( username );
     });
     $(".open-DialogBarangIn").click(function () {
       var id = $(this).closest('tr').children('td.id').text();

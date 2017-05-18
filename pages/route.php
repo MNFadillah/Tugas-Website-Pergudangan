@@ -64,7 +64,19 @@
 			$userMenu = true;
 			include 'pages/static/header.php'; //untuk menambahkan file header.php di folder pages/static/
 			include 'pages/static/sidebar.php';
-			include 'pages/user/index.php'; //menambahkan file pages/content.php
+			if(isset($_GET['action'])){
+				$action = $_GET['action'];
+				//echo "<div class='content-wrapper'>$action</div>";
+				if($action == 'edit'){
+					include 'pages/user/edit.php';
+				}else if($action == 'delete'){
+					include 'pages/user/index.php';
+				}else if($action == 'add'){
+					include 'pages/user/add.php';
+				}
+			}else{
+				include 'pages/user/index.php'; //menambahkan file pages/content.php
+			}
 		}else{
 			include 'pages/static/header.php'; //untuk menambahkan file header.php di folder pages/static/
 			include 'pages/static/sidebar.php';

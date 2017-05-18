@@ -1,4 +1,17 @@
 <?php
+  if(isset($_GET['id']) && isset($_GET['action'])){
+    if($_GET['action'] == 'delete'){
+      $id = $_GET['id'];
+      //echo "<script>alert('$id')</script>";
+      $query = "delete from user where id = $id";
+      $result = $db->query($query);
+      if($result){
+        echo "<script>alert('Data berhasil dihapus')</script>";
+      }else{
+        echo "<script>alert('Data Gagal dihapus')</script>";
+      }
+    }
+  }
   $result = $db->query("select * from user");
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -47,14 +60,13 @@
                   <?php
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                        <td><?php echo $row['id'];?></td>
-                        <td><?php echo $row['nama'];?></td>
-                        <td><?php echo $row['ktp'];?></td>
-                        <td><?php echo $row['username'];?></td>
+                        <td class="id"><?php echo $row['id'];?></td>
+                        <td class="nama"><?php echo $row['nama'];?></td>
+                        <td class="ktp"><?php echo $row['ktp'];?></td>
+                        <td class="username"><?php echo $row['username'];?></td>
                         <td align="center">
-                          <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
-                          <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
-                          <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                          <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogUser btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
+                          <button type="button" onclick="window.location='<?php echo base_url();?>user/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
                     </tr>
                     <?php }
@@ -67,4 +79,53 @@
       </div>
     </section>
   </div>
-      
+
+<div class="modal fade" id="addBookDialog" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>Edit User</h3>
+      </div>
+      <div class="modal-body">
+          <form class="form-horizontal" action="<?php echo base_url(); ?>user/edit" method="post">
+            <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="nama">Nama :</label>
+              <div class="col-sm-10"> 
+                <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="ktp">KTP :</label>
+              <div class="col-sm-10"> 
+                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Enter KTP">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">USERNAME : </label>
+              <div class="col-sm-10"> 
+                <input type="text" name="username" class="form-control" id="username" placeholder="Enter USERNAME">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">PASSWORD : </label>
+              <div class="col-sm-10"> 
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password if you want change">
+              </div>
+            </div>
+            <div class="form-group"> 
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
