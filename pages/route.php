@@ -20,6 +20,8 @@
 					include 'pages/barang/edit.php';
 				}else if($action == 'delete'){
 					include 'pages/barang/index.php';
+				}else if($action == 'add'){
+					include 'pages/barang/add.php';
 				}
 			}else{
 				include 'pages/barang/index.php'; //menambahkan file pages/content.php

@@ -40,7 +40,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="<?php echo base_url();?>barang"><i class="fa fa-circle-o"></i> List Barang</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
+            <li><a href="<?php echo base_url();?>barang/add"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
           </ul>
         </li>
 
