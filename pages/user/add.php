@@ -30,7 +30,7 @@
   <section class="content">
       <div class="row">
        <div class="col-xs-12">
-       <div class="box">
+       <div class="box  col-xs-12">
        <br>
   		<form class="form-horizontal" action="<?php echo base_url(); ?>user/add?" method="post">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">

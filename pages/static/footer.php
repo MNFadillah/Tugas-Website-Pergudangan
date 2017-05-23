@@ -58,13 +58,19 @@
       var id = $(this).closest('tr').children('td.id').text();
       var nama = $(this).closest('tr').children('td.nama').text();
       var deskripsi = $(this).closest('tr').children('td.deskripsi').text();
+      var jenis = $(this).closest('tr').children('td.jenis').text();
+      var tahun_pembuatan = $(this).closest('tr').children('td.tahun_pembuatan').text();
+      var status = $(this).closest('tr').children('td.status').text();
       var stok = $(this).closest('tr').children('td.stok').text();
       var created_at = $(this).closest('tr').children('td.created_at').text();
       //console.log(id);
       $("input#id").val( id );
       $("input#nama").val( nama );
       $("input#deskripsi").val( deskripsi );
-      $("input#stok").val( stok );
+      $("input#jenis").val( jenis );
+      $("input#tahun_pembuatan").val( tahun_pembuatan );
+      $("input#status").val( status );
+      $("input#stok").val( stok );    
     });
     $(".open-DialogUser").click(function () {
       var id = $(this).closest('tr').children('td.id').text();

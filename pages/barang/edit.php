@@ -5,17 +5,23 @@
   		$nama = trim($db->real_escape_string($_POST['nama']));
 		$deskripsi = trim($db->real_escape_string($_POST['deskripsi']));
 		$stok = trim($db->real_escape_string($_POST['stok']));
+		$jenis = $db->real_escape_string($_POST['jenis']);
+		$tahun_pembuatan = $db->real_escape_string($_POST['tahun_pembuatan']);
+		$status = $db->real_escape_string($_POST['status']);
 
 		if($id != "" && $nama != "" && $deskripsi != "" && $stok != ""){
-			$query = "update barang set nama = '$nama', deskripsi = '$deskripsi', stok = '$stok' where id = $id";
+			$query = "update barang set nama = '$nama', deskripsi = '$deskripsi', stok = '$stok', jenis = '$jenis', tahun_pembuatan = '$tahun_pembuatan', status = '$status' where id = $id";
 			$result = $db->query($query);
 			if($result){
-				echo "Data berhasil diubah";
+				echo "<script>alert('Data berhasil diubah');</script>";
 			}else{
-				echo 'Data gagal diubah';
+				echo $db->error;
+				echo $query;
+				echo "<script>alert('Data gagal diubah');</script>";
 			}
 		}else{
-			echo 'Lengkapi data terlebih dahulu';
+			echo "<script>alert('Lengkapi data terlebih dahulu');</script>";
 		}
+		echo "<script>location.href='" . base_url() . "barang'</script>";
   	?>
   </div>

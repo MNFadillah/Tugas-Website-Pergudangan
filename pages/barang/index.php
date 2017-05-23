@@ -43,9 +43,11 @@
                         <th>ID</th>
                         <th>NAMA</th>
                         <th>DESKRIPSI</th>
+                        <th>JENIS</th>
+                        <th>TAHUN PEMBUATAN</th>
+                        <th>STATUS</th>
                         <th>STOK</th>
                         <th>DIBUAT PADA</th>
-                        <th>DIUBAH PADA</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
@@ -54,9 +56,11 @@
                         <th>ID</th>
                         <th>NAMA BARANG</th>
                         <th>DESKRIPSI</th>
+                        <th>JENIS</th>
+                        <th>TAHUN PEMBUATAN</th>
+                        <th>STATUS</th>
                         <th>STOK</th>
                         <th>DIBUAT PADA</th>
-                        <th>DIUBAH PADA</th>
                         <th>ACTION</th>
                     </tr>
                 </tfoot>
@@ -67,9 +71,11 @@
                         <td class="id"><?php echo $row['id'];?></td>
                         <td class="nama"><?php echo $row['nama'];?></td>
                         <td class="deskripsi"><?php echo $row['deskripsi'];?></td>
+                        <td class="jenis"><?php echo $row['jenis'];?></td>
+                        <td class="tahun_pembuatan"><?php echo $row['tahun_pembuatan'];?></td>
+                        <td class="status"><?php echo $row['status'];?></td>
                         <td class="stok"><?php echo $row['stok'];?></td>
                         <td class="created_at"><?php echo $row['created_at'];?></td>
-                        <td class="updated_at"><?php echo $row['updated_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarang btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
                           <button type="button" onclick="window.location='<?php echo base_url();?>barang/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
@@ -98,20 +104,49 @@
           <form class="form-horizontal" action="<?php echo base_url(); ?>barang/edit" method="post">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="deskripsi">Nama :</label>
-              <div class="col-sm-10"> 
+              <label class="control-label col-sm-3" for="deskripsi">Nama :</label>
+              <div class="col-sm-8"> 
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="deskripsi">Deskripsi :</label>
-              <div class="col-sm-10"> 
+              <label class="control-label col-sm-3" for="deskripsi">Deskripsi :</label>
+              <div class="col-sm-8"> 
                 <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Enter Deskripsi">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="stok">Stok : </label>
-              <div class="col-sm-10"> 
+              <label class="control-label col-sm-3" for="jenis">Jenis :</label>
+              <div class="col-sm-8"> 
+                <select name="jenis" id="jenis" class="form-control">
+                  <option value="Pilih Status" selected="true" disabled="true">Pilih Jenis</option>
+                  <option value="elektronik">Elektronik</option>
+                  <option value="mebel">Mebel</option>
+                  <option value="atk">Alat Tulis Kantor</option>
+                  <option value="alat dapur">Alat Dapur</option>
+                  <option value="tekstil">Tekstil</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="tahun_pembuatan">Tahun Pembuatan :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="tahun_pembuatan" class="form-control" id="tahun_pembuatan" placeholder="Masukkan Tahun Pembuatan">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="status">status :</label>
+              <div class="col-sm-8"> 
+                <select name="status" id="status" class="form-control">
+                  <option value="Pilih Status" selected="true" disabled="true">Pilih Status</option>
+                  <option value="lama">Barang Lama</option>
+                  <option value="baru">Barang Baru</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="stok">Stok : </label>
+              <div class="col-sm-8"> 
                 <input type="number" name="stok" class="form-control" id="stok" placeholder="Enter Stok">
               </div>
             </div>
