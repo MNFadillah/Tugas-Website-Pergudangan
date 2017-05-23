@@ -45,6 +45,8 @@
                         <th>ID USER</th>
                         <th>JUMLAH</th>
                         <th>VENDOR</th>
+                        <th>KETERANGAN</th>
+                        <th>STATUS</th>
                         <th>DIBUAT PADA</th>
                         <th>ACTION</th>
                     </tr>
@@ -56,6 +58,8 @@
                         <th>ID USER</th>
                         <th>JUMLAH</th>
                         <th>VENDOR</th>
+                        <th>KETERANGAN</th>
+                        <th>STATUS</th>
                         <th>DIBUAT PADA</th>
                         <th>ACTION</th>
                     </tr>
@@ -69,6 +73,8 @@
                         <td class="id_user"><?php echo $row['id_user'];?></td>
                         <td class="jumlah"><?php echo $row['jumlah'];?></td>
                         <td class="vendor"><?php echo $row['vendor'];?></td>
+                        <td class="keterangan"><?php echo $row['keterangan'];?></td>
+                        <td class="status"><?php echo $row['status'];?></td>
                         <td class="created_at"><?php echo $row['created_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarangIn btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
@@ -98,31 +104,48 @@
           <form class="form-horizontal" action="<?php echo base_url(); ?>barang-masuk/edit" method="post">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="id_barang">ID Barang :</label>
+              <label class="control-label col-sm-3" for="id_barang">ID Barang :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="id_barang" class="form-control" id="id_barang" placeholder="Masukkan ID Barang">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="id_user">ID User :</label>
+              <label class="control-label col-sm-3" for="id_user">ID User :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="id_user" class="form-control" id="id_user" placeholder="Masukkan ID User">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="jumlah">Jumlah :  </label>
+              <label class="control-label col-sm-3" for="jumlah">Jumlah :  </label>
               <div class="col-sm-8"> 
                 <input type="number" name="jumlah" class="form-control" id="jumlah" placeholder="Masukkan Jumlah">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="vendor">Vendor :</label>
+              <label class="control-label col-sm-3" for="vendor">Vendor :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="vendor" class="form-control" id="vendor" placeholder="Masukkan Vendor">
               </div>
             </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="keterangan">Keterangan :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Masukkan Keterangan">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="status">Status :</label>
+              <div class="col-sm-8"> 
+                <select name="status" id="status" class="form-control">
+                  <option disabled="true" selected="true">Pilih Status</option>
+                  <option value="tidak terkirim">Tidak Terkirim</option>
+                  <option value="pending">Pending</option>
+                  <option value="terkirim">Terkirim</option>
+                </select>
+              </div>
+            </div>
             <div class="form-group"> 
-              <div class="col-sm-offset-2 col-sm-8">
+              <div class="col-sm-offset-2 col-sm-3">
                 <button type="submit" name='submit' class="btn btn-default">Submit</button>
               </div>
             </div>

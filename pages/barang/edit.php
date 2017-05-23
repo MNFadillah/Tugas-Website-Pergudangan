@@ -15,8 +15,8 @@
 			if($result){
 				echo "<script>alert('Data berhasil diubah');</script>";
 			}else{
-				echo $db->error;
-				echo $query;
+				// echo $db->error;
+				// echo $query;
 				echo "<script>alert('Data gagal diubah');</script>";
 			}
 		}else{

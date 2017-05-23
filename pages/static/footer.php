@@ -90,6 +90,8 @@
       var id_user = $(this).closest('tr').children('td.id_user').text();
       var jumlah = $(this).closest('tr').children('td.jumlah').text();
       var vendor = $(this).closest('tr').children('td.vendor').text();
+      var keterangan = $(this).closest('tr').children('td.keterangan').text();
+      var status = $(this).closest('tr').children('td.status').text();
       // console.log(vendor);
       // console.log(id);
       $("input#id").val( id );
@@ -97,6 +99,8 @@
       $("input#id_user").val( id_user );
       $("input#jumlah").val( jumlah );
       $("input#vendor").val( vendor );
+      $("input#keterangan").val( keterangan );
+      $("input#status").val( status );
     });
 
     $(".open-DialogBarangOut").click(function () {
