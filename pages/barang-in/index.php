@@ -106,13 +106,15 @@
             <div class="form-group">
               <label class="control-label col-sm-3" for="id_barang">ID Barang :</label>
               <div class="col-sm-8"> 
-                <input type="text" name="id_barang" class="form-control" id="id_barang" placeholder="Masukkan ID Barang">
+                <select id="id_barang" name='id_barang' class="form-control"></select>
+                <!-- <input type="text" name="id_barang" class="form-control" id="id_barang2" placeholder="Masukkan ID Barang"> -->
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3" for="id_user">ID User :</label>
               <div class="col-sm-8"> 
-                <input type="text" name="id_user" class="form-control" id="id_user" placeholder="Masukkan ID User">
+                <select id="id_user" name='id_user' class="form-control"></select>
+                <!-- <input type="text" name="id_user" class="form-control" id="id_user" placeholder="Masukkan ID User"> -->
               </div>
             </div>
             <div class="form-group">

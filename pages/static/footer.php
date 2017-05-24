@@ -100,7 +100,9 @@
       var status = $(this).closest('tr').children('td.status').text();
       // console.log(vendor);
       // console.log(id);
-      $("input#id").val( id );
+      getBarang(id_barang, 'id_barang');
+      getUser(id_user, 'id_user');
+      //$("input#id").val( id );
       $("input#id_barang").val( id_barang );
       $("input#id_user").val( id_user );
       $("input#jumlah").val( jumlah );
@@ -127,6 +129,38 @@
       $("input#keterangan").val( keterangan );
       $("input#status").val( status );
     });
+
+    $("#example").dataTable( {
+        "sScrollX": '100%'
+    } );
+
+    function getBarang(id_barang, elementId){
+      var id = id_barang;
+      // GET JSON FROM PHP SCRIPT
+      $.ajax({
+          type : 'POST',
+          url : 'pages/barang/data.php',
+          data: {'id':id},
+          success : function (sukses) {
+              $('#'+elementId).html(sukses);
+          },
+          // error : errorHandler
+      });
+    }
+
+    function getUser(id_user, elementId){
+      var id = id_user;
+      // GET JSON FROM PHP SCRIPT
+      $.ajax({
+          type : 'POST',
+          url : 'pages/user/data.php',
+          data: {'id':id},
+          success : function (sukses) {
+              $('#'+elementId).html(sukses);
+          },
+          // error : errorHandler
+      });
+    }
 
 </script>
   <?php }
