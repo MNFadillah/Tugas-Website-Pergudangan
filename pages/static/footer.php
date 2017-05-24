@@ -86,8 +86,8 @@
     });
     $(".open-DialogBarangIn").click(function () {
       var id = $(this).closest('tr').children('td.id').text();
-      var id_barang = $(this).closest('tr').children('td.id_barang').text();
-      var id_user = $(this).closest('tr').children('td.id_user').text();
+      var id_barang = $(this).closest('tr').children('td.id_barang').children('.idb').val();
+      var id_user = $(this).closest('tr').children('td.id_user').children('.idu').val();
       var jumlah = $(this).closest('tr').children('td.jumlah').text();
       var vendor = $(this).closest('tr').children('td.vendor').text();
       var keterangan = $(this).closest('tr').children('td.keterangan').text();
@@ -105,10 +105,12 @@
 
     $(".open-DialogBarangOut").click(function () {
       var id = $(this).closest('tr').children('td.id').text();
-      var id_barang = $(this).closest('tr').children('td.id_barang').text();
-      var id_user = $(this).closest('tr').children('td.id_user').text();
+      var id_barang = $(this).closest('tr').children('td.id_barang').children('.idb').val();
+      var id_user = $(this).closest('tr').children('td.id_user').children('.idu').val();
       var jumlah = $(this).closest('tr').children('td.jumlah').text();
       var departemen = $(this).closest('tr').children('td.departemen').text();
+      var keterangan = $(this).closest('tr').children('td.keterangan').text(); 
+      var status = $(this).closest('tr').children('td.status').text();
       // console.log(vendor);
       // console.log(id);
       $("input#id").val( id );
@@ -116,6 +118,8 @@
       $("input#id_user").val( id_user );
       $("input#jumlah").val( jumlah );
       $("input#departemen").val( departemen );
+      $("input#keterangan").val( keterangan );
+      $("input#status").val( status );
     });
 
 </script>

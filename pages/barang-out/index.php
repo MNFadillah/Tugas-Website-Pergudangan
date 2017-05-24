@@ -12,7 +12,7 @@
       }
     }
   }
-  $result = $db->query("select * from barang_keluar");
+  $result = $db->query("select a.*, b.nama, c.nama as nama_user from barang_keluar a, barang b, user c where a.id_barang = b.id and a.id_user = c.id");
 ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -45,6 +45,8 @@
                         <th>ID USER</th>
                         <th>JUMLAH</th>
                         <th>DEPARTEMEN</th>
+                        <th>KETERANGAN</th>
+                        <th>STATUS</th>
                         <th>DIBUAT PADA</th>
                         <th>ACTION</th>
                     </tr>
@@ -56,6 +58,8 @@
                         <th>ID USER</th>
                         <th>JUMLAH</th>
                         <th>DEPARTEMEN</th>
+                        <th>KETERANGAN</th>
+                        <th>STATUS</th>
                         <th>DIBUAT PADA</th>
                         <th>ACTION</th>
                     </tr>
@@ -65,10 +69,12 @@
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td class="id"><?php echo $row['id'];?></td>
-                        <td class="id_barang"><?php echo $row['id_barang'];?></td>
-                        <td class="id_user"><?php echo $row['id_user'];?></td>
+                        <td class="id_barang"><input type="hidden" class="idb" value="<?php echo $row['id_barang'];?>"><?php echo $row['nama'];?></td>
+                        <td class="id_user"><input type="hidden" class="idu" value="<?php echo $row['id_user'];?>"><?php echo $row['nama_user'];?></td>
                         <td class="jumlah"><?php echo $row['jumlah'];?></td>
                         <td class="departemen"><?php echo $row['departemen'];?></td>
+                        <td class="keterangan"><?php echo $row['keterangan'];?></td>
+                        <td class="status"><?php echo $row['status'];?></td>
                         <td class="created_at"><?php echo $row['created_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarangOut btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
@@ -98,27 +104,44 @@
           <form class="form-horizontal" action="<?php echo base_url(); ?>barang-keluar/edit" method="post">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="id_barang">ID Barang :</label>
+              <label class="control-label col-sm-3" for="id_barang">ID Barang :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="id_barang" class="form-control" id="id_barang" placeholder="Masukkan ID Barang">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="id_user">ID User :</label>
+              <label class="control-label col-sm-3" for="id_user">ID User :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="id_user" class="form-control" id="id_user" placeholder="Masukkan ID User">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="jumlah">Jumlah :  </label>
+              <label class="control-label col-sm-3" for="jumlah">Jumlah :  </label>
               <div class="col-sm-8"> 
                 <input type="number" name="jumlah" class="form-control" id="jumlah" placeholder="Masukkan Jumlah">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="departemen">Departemen :</label>
+              <label class="control-label col-sm-3" for="departemen">Departemen :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="departemen" class="form-control" id="departemen" placeholder="Masukkan Departemen">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="keterangan">Keterangan :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Masukkan Keterangan">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="status">Status :</label>
+              <div class="col-sm-8"> 
+                <select name="status" id="status" class="form-control">
+                  <option disabled="true" selected="true">Pilih Status</option>
+                  <option value="tidak terkirim">Tidak Terkirim</option>
+                  <option value="pending">Pending</option>
+                  <option value="terkirim">Terkirim</option>
+                </select>
               </div>
             </div>
             <div class="form-group"> 

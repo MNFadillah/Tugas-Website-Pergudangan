@@ -12,7 +12,7 @@
       }
     }
   }
-  $result = $db->query("select * from barang_masuk");
+  $result = $db->query("select a.*, b.nama, c.nama as nama_user from barang_masuk a, barang b, user c where a.id_barang = b.id and a.id_user = c.id");
 ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -69,8 +69,8 @@
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td class="id"><?php echo $row['id'];?></td>
-                        <td class="id_barang"><?php echo $row['id_barang'];?></td>
-                        <td class="id_user"><?php echo $row['id_user'];?></td>
+                        <td class="id_barang"><input type="hidden" class="idb" value="<?php echo $row['id_barang'];?>"><?php echo $row['nama'];?></td>
+                        <td class="id_user"><input type="hidden" class="idu" value="<?php echo $row['id_user'];?>"><?php echo $row['nama_user'];?></td>
                         <td class="jumlah"><?php echo $row['jumlah'];?></td>
                         <td class="vendor"><?php echo $row['vendor'];?></td>
                         <td class="keterangan"><?php echo $row['keterangan'];?></td>
