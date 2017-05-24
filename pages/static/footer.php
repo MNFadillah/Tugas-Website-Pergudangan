@@ -1,9 +1,9 @@
  <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.12
+      <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2017 <a href="http://rplkel1parb.000webhostapp.com">Kelompok 1</a>.</strong> All rights
     reserved.
   </footer>
   <div class="control-sidebar-bg"></div>
@@ -74,14 +74,20 @@
     });
     $(".open-DialogUser").click(function () {
       var id = $(this).closest('tr').children('td.id').text();
-      var nama = $(this).closest('tr').children('td.nama').text();
       var ktp = $(this).closest('tr').children('td.ktp').text();
+      var nama = $(this).closest('tr').children('td.nama').text();
+      var email = $(this).closest('tr').children('td.email').text();
+      var alamat = $(this).closest('tr').children('td.alamat').text();
+      var telp = $(this).closest('tr').children('td.telp').text();
       var username = $(this).closest('tr').children('td.username').text();
       //var created_at = $(this).closest('tr').children('td.created_at').text();
       //console.log(id);
       $("input#id").val( id );
-      $("input#nama").val( nama );
       $("input#ktp").val( ktp );
+      $("input#nama").val( nama );
+      $("input#email").val( email );
+      $("input#alamat").val( alamat );
+      $("input#telp").val( telp );
       $("input#username").val( username );
     });
     $(".open-DialogBarangIn").click(function () {

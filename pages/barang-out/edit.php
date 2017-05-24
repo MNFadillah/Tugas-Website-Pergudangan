@@ -15,11 +15,13 @@
 			if($result){
 				echo "<script>alert('Data berhasil diubah');</script>";
 			}else{
-				echo "<script>alert('Data berhasil diubah');</script>";
+				// echo $db->error;
+				// echo $query;
+				echo "<script>alert('Data gagal diubah');</script>";
 			}
-			echo "<script>window.location = '".base_url()."barang-keluar';</script>";
 		}else{
-			echo 'Lengkapi data terlebih dahulu';
+			echo "<script>alert('Lengkapi data terlebih dahulu');</script>";
 		}
+		echo "<script>location.href='" . base_url() . "barang-out'</script>";
   	?>
   </div>

@@ -2,25 +2,31 @@
   <div class="content-wrapper">
   	<?php
   		$id = trim($db->real_escape_string($_POST['id']));
-  		$nama = trim($db->real_escape_string($_POST['nama']));
   		$ktp = trim($db->real_escape_string($_POST['ktp']));
+  		$nama = trim($db->real_escape_string($_POST['nama']));
+  		$email = trim($db->real_escape_string($_POST['email']));
+		$alamat = trim($db->real_escape_string($_POST['alamat']));
+		$telp = trim($db->real_escape_string($_POST['telp']));
 		$username = trim($db->real_escape_string($_POST['username']));
 		$password = trim($db->real_escape_string($_POST['password']));
 
 		if($id != "" && $nama != "" && $ktp != "" && $username != ""){
 			if($password != ""){
-				$query = "update user set nama = '$nama', ktp = '$ktp', username = '$username', password = md5('$password') where id = $id";
+				$query = "update user set nama = '$nama', ktp = '$ktp', email = '$email', alamat = '$alamat', telp = '$telp', username = '$username', password = md5('$password') where id = $id";
 			}else{
-				$query = "update user set nama = '$nama', ktp = '$ktp', username = '$username' where id = $id";
+				$query = "update user set nama = '$nama', ktp = '$ktp', email = '$email', alamat = '$alamat', telp = '$telp', username = '$username' where id = $id";
 			}
 			$result = $db->query($query);
 			if($result){
-				echo "Data berhasil diubah";
+				echo "<script>alert('Data berhasil diubah');</script>";
 			}else{
-				echo 'Data gagal diubah';
+				// echo $db->error;
+				// echo $query;
+				echo "<script>alert('Data gagal diubah');</script>";
 			}
 		}else{
-			echo 'Lengkapi data terlebih dahulu';
+			echo "<script>alert('Lengkapi data terlebih dahulu');</script>";
 		}
+		echo "<script>location.href='" . base_url() . "user'</script>";
   	?>
   </div>

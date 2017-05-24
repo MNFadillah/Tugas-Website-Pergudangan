@@ -1,12 +1,15 @@
 <div class="content-wrapper">
 <?php
 	if(isset($_POST['submit'])){
-		$id = trim($db->real_escape_string($_POST['id']));
-    $nama = trim($db->real_escape_string($_POST['nama']));
+    $id = trim($db->real_escape_string($_POST['id']));
     $ktp = trim($db->real_escape_string($_POST['ktp']));
+    $nama = trim($db->real_escape_string($_POST['nama']));
+    $email = trim($db->real_escape_string($_POST['email']));
+    $alamat = trim($db->real_escape_string($_POST['alamat']));
+    $telp = trim($db->real_escape_string($_POST['telp']));
     $username = trim($db->real_escape_string($_POST['username']));
     $password = trim($db->real_escape_string($_POST['password']));
-		$query = "insert into user(nama, ktp, username, password) values('$nama', '$ktp', '$username', md5('$password'))";
+		$query = "insert into user(ktp, nama, email, alamat, telp, username, password) values('$ktp', '$nama', '$email', '$alamat', '$telp', '$username', md5('$password'))";
     $result = $db->query($query);
 		if($result){
 			echo "<script>alert('data berhasil ditambahkan');</script>";
@@ -33,29 +36,47 @@
        <div class="box  col-xs-12">
        <br>
   		<form class="form-horizontal" action="<?php echo base_url(); ?>user/add?" method="post">
-            <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="nama">Nama :</label>
-              <div class="col-sm-10"> 
-                <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama">
-              </div>
-            </div>
+            <input type="hidden" name="id" class="form-control" id="id" placeholder="Masukkan ID">
             <div class="form-group">
               <label class="control-label col-sm-2" for="ktp">KTP :</label>
               <div class="col-sm-10"> 
-                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Enter KTP">
+                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Masukkan KTP">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="username">USERNAME : </label>
+              <label class="control-label col-sm-2" for="nama">Nama :</label>
               <div class="col-sm-10"> 
-                <input type="text" name="username" class="form-control" id="username" placeholder="Enter USERNAME">
+                <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="username">PASSWORD : </label>
+              <label class="control-label col-sm-2" for="email">Email :</label>
               <div class="col-sm-10"> 
-                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="alamat">Alamat :</label>
+              <div class="col-sm-10"> 
+                <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="telp">No. Telpon :</label>
+              <div class="col-sm-10"> 
+                <input type="number" name="telp" class="form-control" id="telp" placeholder="Masukkan No. Telpon">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">Username : </label>
+              <div class="col-sm-10"> 
+                <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan Username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="username">Password : </label>
+              <div class="col-sm-10"> 
+                <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password">
               </div>
             </div>
             <div class="form-group"> 

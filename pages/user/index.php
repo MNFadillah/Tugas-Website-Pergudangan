@@ -41,8 +41,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NAMA</th>
                         <th>KTP</th>
+                        <th>NAMA</th>
+                        <th>EMAIL</th>
+                        <th>ALAMAT</th>
+                        <th>NO. TELEPON</th>
                         <th>USERNAME</th>
                         <th>ACTION</th>
                     </tr>
@@ -50,8 +53,11 @@
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>NAMA</th>
                         <th>KTP</th>
+                        <th>NAMA</th>
+                        <th>EMAIL</th>
+                        <th>ALAMAT</th>
+                        <th>NO. TELEPON</th>
                         <th>USERNAME</th>
                         <th>ACTION</th>
                     </tr>
@@ -61,10 +67,13 @@
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td class="id"><?php echo $row['id'];?></td>
-                        <td class="nama"><?php echo $row['nama'];?></td>
                         <td class="ktp"><?php echo $row['ktp'];?></td>
+                        <td class="nama"><?php echo $row['nama'];?></td>
+                        <td class="email"><?php echo $row['email'];?></td>
+                        <td class="alamat"><?php echo $row['alamat'];?></td>
+                        <td class="telp"><?php echo $row['telp'];?></td>
                         <td class="username"><?php echo $row['username'];?></td>
-                        <td align="center">
+                        <td align="cMasukkan">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogUser btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
                           <button type="button" onclick="window.location='<?php echo base_url();?>user/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
@@ -90,29 +99,47 @@
       </div>
       <div class="modal-body">
           <form class="form-horizontal" action="<?php echo base_url(); ?>user/edit" method="post">
-            <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
+            <input type="hidden" name="id" class="form-control" id="id" placeholder="Masukkan ID">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="nama">Nama :</label>
-              <div class="col-sm-10"> 
-                <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama">
+              <label class="control-label col-sm-3" for="ktp">KTP :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Masukkan KTP">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="ktp">KTP :</label>
-              <div class="col-sm-10"> 
-                <input type="text" name="ktp" class="form-control" id="ktp" placeholder="Enter KTP">
+              <label class="control-label col-sm-3" for="nama">Nama :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="username">USERNAME : </label>
-              <div class="col-sm-10"> 
-                <input type="text" name="username" class="form-control" id="username" placeholder="Enter USERNAME">
+              <label class="control-label col-sm-3" for="email">Email :</label>
+              <div class="col-sm-8"> 
+                <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="username">PASSWORD : </label>
-              <div class="col-sm-10"> 
-                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password if you want change">
+              <label class="control-label col-sm-3" for="alamat">Alamat :</label>
+              <div class="col-sm-8"> 
+                <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="telp">No. Telpon :</label>
+              <div class="col-sm-8"> 
+                <input type="number" name="telp" class="form-control" id="telp" placeholder="Masukkan No. Telpon">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="username">Username : </label>
+              <div class="col-sm-8"> 
+                <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan Username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="username">Password : </label>
+              <div class="col-sm-8"> 
+                <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password jika ingin mengganti">
               </div>
             </div>
             <div class="form-group"> 
