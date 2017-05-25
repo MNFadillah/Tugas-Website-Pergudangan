@@ -18,15 +18,14 @@
 			}
 			$result = $db->query($query);
 			if($result){
-				echo "<script>alert('Data berhasil diubah');</script>";
+				echo "<script>swal('Sukses!','Berhasil mengubah data.','success').then(function(){location.href='" . base_url() . "user';});</script>";
 			}else{
 				// echo $db->error;
 				// echo $query;
-				echo "<script>alert('Data gagal diubah');</script>";
+				echo "<script>swal('Gagal!','Gagal mengubah data.','error').then(function(){location.href='" . base_url() . "user';});</script>";
 			}
 		}else{
-			echo "<script>alert('Lengkapi data terlebih dahulu');</script>";
+			echo "<script>swal('Gagal!','Lengkapi data terlebih dahulu.','error').then(function(){location.href='" . base_url() . "user';});</script>";
 		}
-		echo "<script>location.href='" . base_url() . "user'</script>";
   	?>
   </div>

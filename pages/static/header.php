@@ -28,6 +28,10 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo asset_url();?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/g/sweetalert2@6.6.2(sweetalert2.min.css+sweetalert2.css)">
+  
+  <script src="https://cdn.jsdelivr.net/g/sweetalert2@6.6.2(sweetalert2.min.js+sweetalert2.js)"></script>
+
   <?php
     if($page != "dashboard"){?>
       <link rel="stylesheet" href="<?php echo asset_url(); ?>plugins/datatables/dataTables.bootstrap.css">

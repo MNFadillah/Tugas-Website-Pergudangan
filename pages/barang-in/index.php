@@ -5,10 +5,12 @@
       //echo "<script>alert('$id')</script>";
       $query = "delete from barang_masuk where id = $id";
       $result = $db->query($query);
-      if($result){
-        echo "<script>alert('Data berhasil dihapus')</script>";
-      }else{
-        echo "<script>alert('Data Gagal dihapus')</script>";
+      if($result){ ?>
+        <script>swal('Deleted!', 'Berhasil menghapus data.', 'success' ); </script>
+        <?php
+      }else{ ?>
+        <script>swal( 'Gagal!', 'Gagal menghapus data.', 'error' );</script>
+        <?php
       }
     }
   }
@@ -78,7 +80,7 @@
                         <td class="created_at"><?php echo $row['created_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarangIn btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
-                          <button type="button" onclick="window.location='<?php echo base_url();?>barang-masuk/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                          <button type="button" onclick="deleteData(<?php echo $row['id'];?>);" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
                     </tr>
                     <?php }
@@ -101,17 +103,17 @@
         <h3>Edit Barang</h3>
       </div>
       <div class="modal-body">
-          <form class="form-horizontal" action="<?php echo base_url(); ?>barang-masuk/edit" method="post">
+          <form class="form-horizontal" action="<?php echo base_url(); ?>barang-masuk/edit" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
-              <label class="control-label col-sm-3" for="id_barang">ID Barang :</label>
+              <label class="control-label col-sm-3" for="id_barang">Nama Barang :</label>
               <div class="col-sm-8"> 
                 <select id="id_barang" name='id_barang' class="form-control"></select>
                 <!-- <input type="text" name="id_barang" class="form-control" id="id_barang2" placeholder="Masukkan ID Barang"> -->
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-3" for="id_user">ID User :</label>
+              <label class="control-label col-sm-3" for="id_user">Nama User :</label>
               <div class="col-sm-8"> 
                 <select id="id_user" name='id_user' class="form-control"></select>
                 <!-- <input type="text" name="id_user" class="form-control" id="id_user" placeholder="Masukkan ID User"> -->
@@ -139,10 +141,9 @@
               <label class="control-label col-sm-3" for="status">Status :</label>
               <div class="col-sm-8"> 
                 <select name="status" id="status" class="form-control">
-                  <option disabled="true" selected="true">Pilih Status</option>
-                  <option value="tidak terkirim">Tidak Terkirim</option>
-                  <option value="pending">Pending</option>
-                  <option value="terkirim">Terkirim</option>
+                  <option disabled="true" selected="true" value="null">Pilih Status</option>
+                  <option value="fluktuatif">Fluktuatif</option>
+                  <option value="antisipasi">Antisipasi</option>
                 </select>
               </div>
             </div>
@@ -160,3 +161,37 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+  function validateForm(){
+    var id_barang = document.getElementById('id_barang').value;
+    var id_user = document.getElementById('id_user').value;
+    var jumlah = document.getElementById('jumlah').value;
+    var vendor = document.getElementById('vendor').value;
+    var keterangan = document.getElementById('keterangan').value;
+    var status = document.getElementById('status').value;
+
+    if(id_barang == "" || id_user == "" || jumlah == "" || vendor == "" || keterangan == "" || status == "null"){
+      alert('Isi form dengan benar');
+      return false;
+    }
+    return true;
+  }
+
+  function deleteData(id){
+    //var id = $(this).closest('tr').children('td.id').text();
+    // var id = $(this).data("id");
+    // console.log(id);
+    swal({
+      title: 'Anda yakin ingin menghapus data ini?',
+      text: "Anda tidak akan dapat mengembalikan data ini!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Iya, Hapus!'
+    }).then(function () {
+      window.location='<?php echo base_url();?>barang-masuk/delete/' + id;
+    });
+  }
+</script>

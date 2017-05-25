@@ -9,10 +9,10 @@
 		$query = "insert into barang_masuk(id_barang, id_user, jumlah, vendor, keterangan, status) values('$id_barang', '$id_user', '$jumlah', '$vendor', '$keterangan', '$status')";
 
 		if($db->query($query)){
-			echo "<script>alert('data berhasil ditambahkan');</script>";
-		}else{
-			echo "<script>alert('data berhasil ditambahkan');</script>";
-		}
+      echo "<script>swal('Sukses!','Berhasil menambah data.','success');</script>";
+    }else{
+      echo "<script>swal('Gagal!','Gagal menambah data.','error');</script>";
+    }
 	}
   $query = "select * from barang";
   $barangData = $db->query($query);
@@ -36,7 +36,7 @@
        <div class="col-xs-12">
        <div class="box  col-xs-12 ">
        <br>
-  		<form class="form-horizontal" action="<?php echo base_url(); ?>barang-masuk/add" method="post">
+  		<form class="form-horizontal" action="<?php echo base_url(); ?>barang-masuk/add" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="id" class="form-control" id="text-id" placeholder="Enter ID">
             <div class="form-group">
               <label class="control-label col-sm-2" for="id_barang">Nama Barang :</label>
@@ -84,9 +84,8 @@
               <div class="col-sm-8"> 
                 <select name="status" id="status" class="form-control">
                   <option disabled="true" selected="true">Pilih Status</option>
-                  <option value="tidak terkirim">Tidak Terkirim</option>
-                  <option value="pending">Pending</option>
-                  <option value="terkirim">Terkirim</option>
+                  <option value="fluktuatif">Fluktuatif</option>
+                  <option value="antisipasi">Antisipasi</option>
                 </select>
               </div>
             </div>
@@ -102,3 +101,19 @@
       </div>
   	</section>
   </div>
+<script type="text/javascript">
+  function validateForm(){
+    var id_barang = document.getElementById('id_barang').value;
+    var id_user = document.getElementById('id_user').value;
+    var jumlah = document.getElementById('jumlah').value;
+    var vendor = document.getElementById('vendor').value;
+    var keterangan = document.getElementById('keterangan').value;
+    var status = document.getElementById('status').value;
+
+    if(id_barang == "" || id_user == "" || jumlah == "" || vendor == "" || keterangan == "" || status == "null"){
+      alert('Isi form dengan benar');
+      return false;
+    }
+    return true;
+  }
+</script>

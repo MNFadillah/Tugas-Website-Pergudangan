@@ -102,9 +102,9 @@
       // console.log(id);
       getBarang(id_barang, 'id_barang');
       getUser(id_user, 'id_user');
-      //$("input#id").val( id );
-      $("input#id_barang").val( id_barang );
-      $("input#id_user").val( id_user );
+      $("input#id").val( id );
+      // $("input#id_barang").val( id_barang );
+      // $("input#id_user").val( id_user );
       $("input#jumlah").val( jumlah );
       $("input#vendor").val( vendor );
       $("input#keterangan").val( keterangan );
@@ -121,9 +121,11 @@
       var status = $(this).closest('tr').children('td.status').text();
       // console.log(vendor);
       // console.log(id);
+      getBarang(id_barang, 'id_barang');
+      getUser(id_user, 'id_user');
       $("input#id").val( id );
-      $("input#id_barang").val( id_barang );
-      $("input#id_user").val( id_user );
+      // $("input#id_barang").val( id_barang );
+      // $("input#id_user").val( id_user );
       $("input#jumlah").val( jumlah );
       $("input#departemen").val( departemen );
       $("input#keterangan").val( keterangan );
@@ -139,7 +141,7 @@
       // GET JSON FROM PHP SCRIPT
       $.ajax({
           type : 'POST',
-          url : 'pages/barang/data.php',
+          url : '<?php echo base_url(); ?>pages/barang/data.php',
           data: {'id':id},
           success : function (sukses) {
               $('#'+elementId).html(sukses);
@@ -153,7 +155,7 @@
       // GET JSON FROM PHP SCRIPT
       $.ajax({
           type : 'POST',
-          url : 'pages/user/data.php',
+          url : '<?php echo base_url(); ?>pages/user/data.php',
           data: {'id':id},
           success : function (sukses) {
               $('#'+elementId).html(sukses);

@@ -9,9 +9,9 @@
     $query = "insert into barang_keluar(id_barang, id_user, jumlah, departemen, keterangan, status) values('$id_barang', '$id_user', '$jumlah', '$departemen', '$keterangan', '$status')";
 
     if($db->query($query)){
-      echo "<script>alert('data berhasil ditambahkan');</script>";
+      echo "<script>swal('Sukses!','Berhasil menambah data.','success');</script>";
     }else{
-      echo "<script>alert('data berhasil ditambahkan');</script>";
+      echo "<script>swal('Gagal!','Gagal menambah data.','error');</script>";
     }
   }
   
@@ -37,7 +37,7 @@
        <div class="col-xs-12">
        <div class="box  col-xs-12">
        <br>
-      <form class="form-horizontal" action="<?php echo base_url(); ?>barang-keluar/add" method="post">
+      <form class="form-horizontal" action="<?php echo base_url(); ?>barang-keluar/add" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="id" class="form-control" id="text-id" placeholder="Enter ID">
             <div class="form-group">
               <label class="control-label col-sm-2" for="id_barang">Nama Barang :</label>
@@ -69,7 +69,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="vendor">Departemen :</label>
+              <label class="control-label col-sm-2" for="departemen">Departemen :</label>
               <div class="col-sm-8"> 
                 <input type="text" name="departemen" class="form-control" id="departemen" placeholder="Masukkan departemen">
               </div>
@@ -84,8 +84,7 @@
               <label class="control-label col-sm-2" for="status">Status :</label>
               <div class="col-sm-8"> 
                 <select name="status" id="status" class="form-control">
-                  <option disabled="true" selected="true">Pilih Status</option>
-                  <option value="tidak terkirim">Tidak Terkirim</option>
+                  <option disabled="true" selected="true" value="null">Pilih Status</option>
                   <option value="pending">Pending</option>
                   <option value="terkirim">Terkirim</option>
                 </select>
@@ -103,3 +102,19 @@
       </div>
     </section>
   </div>
+<script type="text/javascript">
+  function validateForm(){
+    var id_barang = document.getElementById('id_barang').value;
+    var id_user = document.getElementById('id_user').value;
+    var jumlah = document.getElementById('jumlah').value;
+    var departemen = document.getElementById('departemen').value;
+    var keterangan = document.getElementById('keterangan').value;
+    var status = document.getElementById('status').value;
+
+    if(id_barang == "" || id_user == "" || jumlah == "" || departemen == "" || keterangan == "" || status == "null"){
+      alert('Isi form dengan benar');
+      return false;
+    }
+    return true;
+  }
+</script>

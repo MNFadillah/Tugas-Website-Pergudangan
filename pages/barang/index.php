@@ -5,10 +5,12 @@
       //echo "<script>alert('$id')</script>";
       $query = "delete from barang where id = $id";
       $result = $db->query($query);
-      if($result){
-        echo "<script>alert('Data berhasil dihapus')</script>";
-      }else{
-        echo "<script>alert('Data Gagal dihapus')</script>";
+      if($result){ ?>
+        <script> swal('Deleted!','Berhasil menghapus data.','success'); </script>
+        <?php
+      }else{ ?>
+        <script>swal('Error!','Gagal menghapus data.','success');</script>
+        <?php
       }
     }
   }
@@ -78,7 +80,7 @@
                         <td class="created_at"><?php echo $row['created_at'];?></td>
                         <td align="center">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogBarang btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
-                          <button type="button" onclick="window.location='<?php echo base_url();?>barang/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                          <button type="button"  onclick="deleteData(<?php echo $row['id'];?>);" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
                     </tr>
                     <?php }
@@ -101,7 +103,7 @@
         <h3>Edit Barang</h3>
       </div>
       <div class="modal-body">
-          <form class="form-horizontal" action="<?php echo base_url(); ?>barang/edit" method="post">
+          <form class="form-horizontal" action="<?php echo base_url(); ?>barang/edit" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="id" class="form-control" id="id" placeholder="Enter ID">
             <div class="form-group">
               <label class="control-label col-sm-3" for="deskripsi">Nama :</label>
@@ -119,7 +121,7 @@
               <label class="control-label col-sm-3" for="jenis">Jenis :</label>
               <div class="col-sm-8"> 
                 <select name="jenis" id="jenis" class="form-control">
-                  <option value="Pilih Status" selected="true" disabled="true">Pilih Jenis</option>
+                  <option value="null" selected="true" disabled="true">Pilih Jenis</option>
                   <option value="elektronik">Elektronik</option>
                   <option value="mebel">Mebel</option>
                   <option value="atk">Alat Tulis Kantor</option>
@@ -137,8 +139,8 @@
             <div class="form-group">
               <label class="control-label col-sm-3" for="status">status :</label>
               <div class="col-sm-8"> 
-                <select name="status" id="status" class="form-control">
-                  <option value="Pilih Status" selected="true" disabled="true">Pilih Status</option>
+                <select name="status" id="status" class="form-control" >
+                  <option value="null" selected="true" disabled="true">Pilih Status</option>
                   <option value="lama">Barang Lama</option>
                   <option value="baru">Barang Baru</option>
                 </select>
@@ -164,3 +166,36 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+  function validateForm(){
+    var nama = document.getElementById('nama').value;
+    var deskripsi = document.getElementById('deskripsi').value;
+    var jenis = document.getElementById('jenis').value;
+    var tahun_pembuatan = document.getElementById('tahun_pembuatan').value;
+    var status = document.getElementById('status').value;
+    var stok = document.getElementById('stok').value;
+    if(nama == "" || deskripsi == "" || jenis == "null" || tahun_pembuatan == "" || status == "null" || stok == ""){
+      alert('Isi form dengan benar');
+      return false;
+    }
+    return true;
+  }
+
+  function deleteData(id){
+    //var id = $(this).closest('tr').children('td.id').text();
+    // var id = $(this).data("id");
+    // console.log(id);
+    swal({
+      title: 'Anda yakin ingin menghapus data ini?',
+      text: "Anda tidak akan dapat mengembalikan data ini!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Iya, Hapus!'
+    }).then(function () {
+      window.location='<?php echo base_url();?>barang/delete/' + id;
+    });
+  }
+</script>

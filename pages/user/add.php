@@ -12,11 +12,10 @@
 		$query = "insert into user(ktp, nama, email, alamat, telp, username, password) values('$ktp', '$nama', '$email', '$alamat', '$telp', '$username', md5('$password'))";
     $result = $db->query($query);
 		if($result){
-			echo "<script>alert('data berhasil ditambahkan');</script>";
-		}else{
-
-			echo "<script>alert('data gagal ditambahkan');</script>";
-		}
+      echo "<script>swal('Sukses!','Berhasil menambah data.','success');</script>";
+    }else{
+      echo "<script>swal('Gagal!','Gagal menambah data.','error');</script>";
+    }
 	}
 ?>
 <!-- Content Wrapper. Contains page content -->

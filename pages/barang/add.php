@@ -9,10 +9,10 @@
 		$query = "insert into barang(nama, deskripsi, stok, jenis, tahun_pembuatan, status) values('$nama', '$deskripsi', '$stok', '$jenis', '$tahun_pembuatan', '$status')";
 
 		if($db->query($query)){
-			echo "<script>alert('data berhasil ditambahkan');</script>";
-		}else{
-			echo "<script>alert('data berhasil ditambahkan');</script>";
-		}
+      echo "<script>swal('Sukses!','Berhasil menambah data.','success');</script>";
+    }else{
+      echo "<script>swal('Gagal!','Gagal menambah data.','error');</script>";
+    }
 	}
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -32,7 +32,7 @@
        <div class="col-xs-12">
        <div class="box  col-xs-12">
        <br>
-  		<form class="form-horizontal" action="<?php echo base_url(); ?>barang/add" method="post">
+  		<form class="form-horizontal" action="<?php echo base_url(); ?>barang/add" method="post" onsubmit="return validateForm()">
             <input type="hidden" name="id" class="form-control" id="text-id" placeholder="Masukkan ID">
             <div class="form-group">
               <label class="control-label col-sm-2" for="deskripsi">Nama :</label>
@@ -62,14 +62,14 @@
             <div class="form-group">
               <label class="control-label col-sm-2" for="tahun_pembuatan">Tahun Pembuatan :</label>
               <div class="col-sm-8"> 
-                <input type="text" name="tahun_pembuatan" class="form-control" id="tahun_pembuatan" placeholder="Masukkan Tahun Pembuatan">
+                <input type="number" name="tahun_pembuatan" class="form-control" id="tahun_pembuatan" placeholder="Masukkan Tahun Pembuatan">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="status">status :</label>
               <div class="col-sm-8"> 
                 <select name="status" id="status" class="form-control">
-                  <option value="Pilih Status" selected="true" disabled="true">Pilih Status</option>
+                  <option value="Pilih Status" selected="true" disabled="true" value="null">Pilih Status</option>
                   <option value="lama">Barang Lama</option>
                   <option value="baru">Barang Baru</option>
                 </select>
@@ -93,3 +93,19 @@
       </div>
   	</section>
   </div>
+
+  <script type="text/javascript">
+    function validateForm(){
+      var nama = document.getElementById('nama').value;
+      var deskripsi = document.getElementById('deskripsi').value;
+      var jenis = document.getElementById('jenis').value;
+      var tahun_pembuatan = document.getElementById('tahun_pembuatan').value;
+      var status = document.getElementById('status').value;
+      var stok = document.getElementById('stok').value;
+      if(nama === "" || deskripsi === "" || jenis === "null" || tahun_pembuatan === "" || status === "null" || stok === ""){
+        alert('Isi form dengan benar');
+        return false;
+      }
+      return true;
+    }
+  </script>

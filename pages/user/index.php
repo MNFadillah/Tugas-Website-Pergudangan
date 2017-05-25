@@ -5,10 +5,12 @@
       //echo "<script>alert('$id')</script>";
       $query = "delete from user where id = $id";
       $result = $db->query($query);
-      if($result){
-        echo "<script>alert('Data berhasil dihapus')</script>";
-      }else{
-        echo "<script>alert('Data Gagal dihapus')</script>";
+      if($result){ ?>
+        <script>swal('Deleted!', 'Berhasil menghapus data.', 'success' ); </script>
+        <?php
+      }else{ ?>
+        <script>swal( 'Gagal!', 'Gagal menghapus data.', 'error' );</script>
+        <?php
       }
     }
   }
@@ -75,7 +77,7 @@
                         <td class="username"><?php echo $row['username'];?></td>
                         <td align="cMasukkan">
                           <button type="button" id="btn-edit" data-toggle="modal" data-target="#addBookDialog" data-id="<?php echo $row['id'];?>" title="Add this item" class="open-DialogUser btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> 
-                          <button type="button" onclick="window.location='<?php echo base_url();?>user/delete/<?php echo $row['id']; ?>'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
+                          <button type="button" onclick="deleteData(<?php echo $row['id'];?>);" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> 
                         </td>
                     </tr>
                     <?php }
@@ -156,3 +158,21 @@
 
   </div>
 </div>
+<script type="text/javascript">
+  function deleteData(id){
+    //var id = $(this).closest('tr').children('td.id').text();
+    // var id = $(this).data("id");
+    // console.log(id);
+    swal({
+      title: 'Anda yakin ingin menghapus data ini?',
+      text: "Anda tidak akan dapat mengembalikan data ini!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Iya, Hapus!'
+    }).then(function () {
+      window.location='<?php echo base_url();?>user/delete/' + id;
+    });
+  }
+</script>
